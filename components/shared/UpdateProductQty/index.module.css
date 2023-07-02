@@ -1,0 +1,17 @@
+.btnContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.button {
+  border: 1px solid var(--primary-color);
+  padding: 0px 4px;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  color: var(--hover-color);
+  box-shadow: var(--box-shadow);
+}

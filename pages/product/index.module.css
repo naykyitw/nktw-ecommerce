@@ -1,0 +1,95 @@
+.notFoundContainer {
+  display: flex;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+.product {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+}
+.imgContainer {
+  flex-grow: 1;
+  width: 450px;
+}
+.img {
+  height: 300px;
+  width: 100%;
+  border-radius: 8px;
+}
+.sliderContainer {
+  width: 100%;
+}
+.swiperImg {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sliderContainer {
+  margin: 8px 0px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.title {
+  color: var(--primary-color);
+}
+.productInfoContainer {
+  flex-grow: 1;
+}
+.productDescription {
+  margin: 16px 0px;
+}
+.subtitle {
+  color: var(--primary-color);
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-bottom: 8px;
+}
+.button {
+  border: 1px solid var(--secoundary-color);
+  color: var(--primary-color);
+  padding: 2px 8px;
+  border-radius: 8px;
+}
+.button:hover {
+  color: var(--primary-color-dark);
+  box-shadow: var(--box-shadow);
+}
+.starsContainer {
+  display: flex;
+  margin-top: 8px;
+}
+.starsContainer p {
+  margin-right: 8px;
+}
+.star {
+  filter: brightness(0) saturate(100%) invert(8%) sepia(87%) saturate(3088%)
+    hue-rotate(246deg) brightness(92%) contrast(92%);
+}
+.price {
+  font-size: 32px;
+  font-weight: 600;
+  padding: 16px 0px;
+  color: var(--primary-color);
+}
+@media (max-width: 768px) {
+  .product {
+    flex-direction: column;
+    padding: 0px 16px 16px;
+  }
+  .imgContainer {
+    width: 100%;
+    border-radius: 8px;
+  }
+  .img {
+    height: 250px;
+  }
+}

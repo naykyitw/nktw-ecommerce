@@ -1,0 +1,130 @@
+.container {
+  display: flex;
+  padding: 12px 0px;
+  gap: 24px;
+}
+.products {
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--box-shadow);
+  padding: 16px;
+  gap: 32px;
+  flex: 1;
+  border-radius: 8px;
+  text-align: center;
+}
+.productContainer {
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+.productInfoContainer {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+}
+.productContainer::after {
+  content: " ";
+  position: absolute;
+  bottom: -17px;
+  left: 0px;
+  height: 1px;
+  width: 100%;
+  border-top: 1px solid #ddd;
+  z-index: 1;
+}
+.title {
+  font-size: 19px;
+  line-height: 22px;
+  text-transform: capitalize;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+.imgContainer {
+  width: 200px;
+  height: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+.productInfo {
+  text-align: left;
+  cursor: pointer;
+}
+.price {
+  color: var(--primary-color);
+  font-size: 19px;
+  font-weight: 600;
+}
+.itemPriceContainer {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+.itemPrice {
+  width: 80px;
+  text-align: right;
+  color: var(--primary-color);
+  font-size: 19px;
+  font-weight: 600;
+}
+.totalPrice {
+  display: flex;
+  margin-top: 16px;
+}
+.total {
+  margin-left: auto;
+  font-size: 24px;
+  color: var(--primary-color);
+  font-size: 24px;
+  font-weight: 600;
+}
+.totalLabel {
+  font-size: 24px;
+}
+.cardSummaryContainer {
+  width: 300px;
+  box-shadow: var(--box-shadow);
+  border-radius: 8px;
+  padding: 16px;
+  min-height: 182px;
+  height: max-content;
+}
+.checkout {
+  font-size: 16px;
+  background-color: var(--primary-color);
+  color: white;
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 16px;
+  padding: 4px 16px;
+  height: 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.checkout:hover {
+  box-shadow: var(--box-shadow);
+  background-color: var(--hover-color);
+}
+.checkout:disabled {
+  box-shadow: none;
+  background-color: var(--hover-color);
+}
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    padding: 16px;
+  }
+  .imgContainer {
+    width: 100%;
+  }
+  .productContainer {
+    flex-direction: column;
+  }
+  .cardSummaryContainer {
+    width: 100%;
+  }
+}
