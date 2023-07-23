@@ -4,6 +4,17 @@ import cx from "classnames";
 
 import styles from "./index.module.css";
 
+interface ProductThumbnailProps {
+  thumbnail: string;
+  discountPercentage?: number;
+  imgClassName: string;
+  alt?: string;
+  preload?: boolean;
+  loading?: "lazy" | "eager" | undefined;
+  width: number;
+  height: number;
+}
+
 export default function ProductThumbnail({
   thumbnail,
   discountPercentage,
@@ -13,7 +24,7 @@ export default function ProductThumbnail({
   loading,
   width,
   height,
-}) {
+}: ProductThumbnailProps): JSX.Element {
   const imgConfig = {
     loading,
     src: thumbnail,
@@ -28,7 +39,7 @@ export default function ProductThumbnail({
 
       {discountPercentage && (
         <div className={styles.percentageOff}>
-          {parseInt(discountPercentage)}% OFF
+          {discountPercentage}% OFF
         </div>
       )}
     </div>

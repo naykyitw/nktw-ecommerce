@@ -89,7 +89,7 @@
   box-shadow: var(--box-shadow);
   border-radius: 8px;
   padding: 16px;
-  min-height: 182px;
+  min-height: 190px;
   height: max-content;
 }
 .checkout {

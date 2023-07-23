@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
-import useCart from "../../../store/store";
+import useCart from "@/mycart/mycart";
 import cartImg from "./cart.svg";
 
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const totalqty = useCart((state) => state.totalqty);
+  const totalqty = useCart((state: any) => state.totalqty);
   const [mytotalqty, setTotalqty] = useState();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <Link href="/">
+        <Link href="/search/all-products/1">
           <motion.p
             animate={{ x: [0, 100, 0], opacity: 1, scale: 1 }}
             className={styles.heading}
@@ -30,7 +30,7 @@ const Header = () => {
             }}
             initial={{ opacity: 0, scale: 1 }}
           >
-            NayKyi Ecommerce
+            NK.TW
           </motion.p>
         </Link>
         <div className={styles.cartContainer}>
@@ -38,7 +38,6 @@ const Header = () => {
             <motion.div
               whileHover={{ scale: [null, 1.3, 1.1] }}
               transition={{ duration: 0.3 }}
-              cx={500}
               key={cartImg}
             >
               <Image

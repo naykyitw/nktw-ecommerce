@@ -1,0 +1,88 @@
+.container {
+  margin-top: 24px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+.filter {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+  gap: 8px;
+}
+.input {
+  padding: 6px 10px;
+  box-shadow: var(--box-shadow);
+  border-radius: 8px;
+}
+
+.PaginationList {
+  list-style-type: none;
+  text-align: center;
+  margin: 0 auto;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.PaginationList li {
+  list-style: none;
+}
+
+.PaginationList > li > a {
+  color: var(--primary-color);
+  display: inline-block;
+  cursor: pointer;
+  padding: 1px 9px;
+  font-size: 16px;
+  margin: 3px;
+  color: var(--primary-color);
+  font-weight: 500;
+  border: 1px solid #e0e0e0;
+  background-color: rgba(0, 0, 0, 0);
+  border-radius: 8px;
+}
+
+.PaginationList > li > a {
+  color: var(--primary-color);
+}
+
+.PaginationList > :global(.disabled) > a {
+  display: none;
+  border-color: transparent;
+}
+
+.PaginationList > :global(.break) {
+  padding-left: 0px;
+  padding-right: 0px;
+  border: 0;
+}
+
+.PaginationList > :global(.break) > span {
+  color: #7777af;
+}
+
+.PaginationList > :global(.isActive) > a {
+  border: 1px solid var(--primary-color);
+  background-color: var(--purple-light);
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 16px;
+    margin-top: 0px;
+  }
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+@media (max-width: 576px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}

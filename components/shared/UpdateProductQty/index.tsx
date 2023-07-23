@@ -1,18 +1,25 @@
-import useCart from "../../../store/store";
+import useCart from "@/mycart/mycart";
 import { motion } from "framer-motion";
-
+import { Product } from "@/interfaces/interfaces";
 import styles from "./index.module.css";
 
-export default function UpdateProductQty({ product }) {
+interface UpdateProductQtyProps {
+  product: Product;
+}
+
+export default function UpdateProductQty({
+  product,
+}: UpdateProductQtyProps): JSX.Element {
   const mycart = useCart((state) => state.cartContent);
   const addTocart = useCart((state) => state.addTocart);
   const updatecart = useCart((state) => state.updatecart);
   const removeFromCart = useCart((state) => state.removeFromCart);
 
-  const addProduct = () => {
-    const newProductState = mycart.findIndex((item) => item.id === product.id);
+  const addProduct = (): void => {
+    const newProductState = mycart.findIndex(
+      (item: any) => item.id === product.id
+    );
     if (newProductState !== -1) {
-      mycart[newProductState].quantity++;
       const totalPlusMinusInd = 1;
       if (product.price)
         updatecart({ params: product, mycart, totalPlusMinusInd });
@@ -21,24 +28,25 @@ export default function UpdateProductQty({ product }) {
     }
   };
 
-  const removeProduct = () => {
-    const newProductState = mycart.findIndex((item) => item.id === product.id);
+  const removeProduct = (): void => {
+    const newProductState = mycart.findIndex(
+      (item: any) => item.id === product.id
+    );
     if (newProductState !== -1) {
       if (product?.quantity === 1) {
         removeFromCart(product);
       } else {
-        mycart[newProductState].quantity--;
         const totalPlusMinusInd = -1;
         updatecart({ params: product, mycart, totalPlusMinusInd });
       }
     }
   };
+
   return (
     <div className={styles.btnContainer}>
       <motion.div
         whileHover={{ scale: [null, 1.1, 1.1] }}
         transition={{ duration: 1 }}
-        cx={500}
       >
         <button className={styles.button} onClick={() => removeProduct()}>
           -
@@ -48,7 +56,6 @@ export default function UpdateProductQty({ product }) {
       <motion.div
         whileHover={{ scale: [null, 1.1, 1.1] }}
         transition={{ duration: 1 }}
-        cx={500}
       >
         <button className={styles.button} onClick={() => addProduct()}>
           +

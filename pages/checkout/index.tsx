@@ -1,20 +1,21 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Product } from "@/interfaces/interfaces";
 
-import useCart from "../../store/store";
-import UpdateProductQty from "../../components/shared/UpdateProductQty";
+import useCart from "@/mycart/mycart";
+import UpdateProductQty from "@/components/shared/UpdateProductQty";
 
 import styles from "./index.module.css";
 
 export default function Checkout() {
-  const cartContent = useCart((state) => state.cartContent);
-  const totalqty = useCart((state) => state.totalqty);
-  const total = useCart((state) => state.total);
-  const clearCart = useCart((state) => state.clearCart);
+  const cartContent: Product[] = useCart((state: any) => state.cartContent);
+  const totalqty: number = useCart((state: any) => state.totalqty);
+  const total: number = useCart((state: any) => state.total);
+  const clearCart: () => void = useCart((state: any) => state.clearCart);
 
-  const [myCartContent, setMyCartContent] = useState();
-  const [myTotal, setMyTotal] = useState();
-  const [showModal, setShowModal] = useState(false);
+  const [myCartContent, setMyCartContent] = useState<Product[] | undefined>();
+  const [myTotal, setMyTotal] = useState<number | undefined>();
+  const [showModal, setShowModal] = useState<boolean>(false);
 
   useEffect(() => {
     setMyCartContent(cartContent);
@@ -25,26 +26,26 @@ export default function Checkout() {
     <div className={styles.container}>
       <div className={styles.products}>
         {myCartContent && myCartContent?.length > 0 ? (
-          myCartContent?.map((product, index) => (
+          myCartContent?.map((product: any, index: number) => (
             <div key={index} className={styles.productContainer}>
-              <Link
-                className={styles.title}
-                href="/product/[id]"
-                as={`/product/${product.id}`}
-              >
-                <div
-                  style={{ backgroundImage: ` url(${product.thumbnail})` }}
-                  className={styles.imgContainer}
-                />
+              <Link href="/product/[id]" as={`/product/${product.id}`} passHref>
+                <div className={styles.title}>
+                  <div
+                    style={{ backgroundImage: `url(${product.thumbnail})` }}
+                    className={styles.imgContainer}
+                  />
+                </div>
               </Link>
               <div key={index} className={styles.productInfoContainer}>
                 <Link
-                  className={styles.productInfo}
                   href="/product/[id]"
                   as={`/product/${product.id}`}
+                  passHref
                 >
-                  <p className={styles.title}>{product.title}</p>
-                  <p className={styles.price}>S${product.price}</p>
+                  <div className={styles.productInfo}>
+                    <p className={styles.title}>{product.title}</p>
+                    <p className={styles.price}>S${product.price}</p>
+                  </div>
                 </Link>
                 <div className={styles.itemPriceContainer}>
                   <UpdateProductQty product={product} />
@@ -77,7 +78,7 @@ export default function Checkout() {
         </button>
       </div>
 
-      {showModal ? (
+      {showModal && (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
@@ -97,13 +98,13 @@ export default function Checkout() {
                 </div>
 
                 <div className="flex items-center justify-end p-6 rounded-b">
-                  <Link
-                    href="/"
-                    className={styles.checkout}
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Continue to Shopping
+                  <Link href="/">
+                    <div
+                      className={styles.checkout}
+                      onClick={() => setShowModal(false)}
+                    >
+                      Continue to Shopping
+                    </div>
                   </Link>
                 </div>
               </div>
@@ -111,7 +112,7 @@ export default function Checkout() {
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
-      ) : null}
+      )}
     </div>
   );
 }
